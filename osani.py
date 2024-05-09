@@ -21,7 +21,7 @@ def interpret(code):
         elif line.startswith("add"):
             addtype = line.split(" ")[1].strip("\"\'")
             if addtype.startswith("cmd"):
-                cmdname = line.split(", ")[1].strip("")
+                cmdname = line.split(", ")[1].strip("\"\'")
                 commands[cmdname] = []
             elif addtype.startswith("code"):
                 cmdname = line.split(", ")[1].split(" @>")[0].strip("\"\'")
