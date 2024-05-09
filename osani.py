@@ -25,7 +25,7 @@ def interpret(code):
                 commands[cmdname] = []
             elif addtype.startswith("code"):
                 cmdname = line.split(", ")[1].split(" @>")[0].strip("\"\'")
-                cmdcode = line.split("@>")[1].split("@<")[0].strip("\"\'")
+                cmdcode = line.split("@> ")[1].split(" @<")[0].strip("\"\'")
                 for cmds in commands:
                     if cmdname == cmds:
                         commands[cmdname].append(cmdcode)
@@ -38,8 +38,8 @@ def interpret(code):
                 if command == "exit":
                     break
                 elif command == "help":
+                    print("commands:")
                     for cmd in commands:
-                        print("commands:")
                         print(cmd)
                 else:
                     for cmd in commands:
@@ -47,6 +47,7 @@ def interpret(code):
                             exec("\n".join(commands[cmd]))
                         else:
                             print(f"Unknown command: {command}")
+                            break
 
 def execute_file(filename):
     if filename.endswith(".os"):
