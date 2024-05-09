@@ -3,6 +3,6 @@ push prchar, !
 push newline
 
 add cmd, exo
-add code, exo @>msg = input("message > ")@<
-add code, exo @>print(msg)@<
+add code, exo @> msg = input("message > ") @<
+add code, exo @> print(msg) @<
 start icaOS
