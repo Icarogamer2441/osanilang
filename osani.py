@@ -1,5 +1,4 @@
 commands = {}
-variables = {}
 
 def interpret(code):
     lines = code.split("\n")
@@ -24,10 +23,13 @@ def interpret(code):
                 cmdname = line.split(", ")[1].strip("\"\'")
                 commands[cmdname] = []
             elif addtype.startswith("code"):
-                cmdname = line.split(", ")[1].split(" @>")[0].strip("\"\'")
-                cmdcode = line.split("@> ")[1].split(" @<")[0].strip("\"\'")
+                cmdname = line.split(", ")[1].split(" @> ")[0].strip("\"\'")
+                cmdcode = line.split(" @> ")[1].split(" @<")[0].strip("\"\'")
                 for cmds in commands:
                     if cmdname == cmds:
+                        commands[cmdname].append(cmdcode)
+                    elif cmdname != cmds:
+                        commands[cmdname] == []
                         commands[cmdname].append(cmdcode)
                     else:
                         print("command not found")
