@@ -28,11 +28,6 @@ def interpret(code):
                 for cmds in commands:
                     if cmdname == cmds:
                         commands[cmdname].append(cmdcode)
-                    elif cmdname != cmds:
-                        commands[cmdname] == []
-                        commands[cmdname].append(cmdcode)
-                    else:
-                        print("command not found")
         elif line.startswith("start"):
             osname = line.split(" ")[1].strip("\"\'")
             while True:
@@ -44,12 +39,7 @@ def interpret(code):
                     for cmd in commands:
                         print(cmd)
                 else:
-                    for cmd in commands:
-                        if command == cmd:
-                            exec("\n".join(commands[cmd]))
-                        else:
-                            print(f"Unknown command: {command}")
-                            break
+                    exec("\n".join(commands[command]))
 
 def execute_file(filename):
     if filename.endswith(".os"):
